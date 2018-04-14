@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3.3.3' 
+            image 'charan556/jenkins-docker-slave' 
             args '-v /root/.m2:/root/.m2' 
         }
     }

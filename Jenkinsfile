@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'charan556/jenkins-docker-slave' 
+            image 'charan556/jenkins-slave' 
             args '-v /root/.m2:/root/.m2' 
         }
     }

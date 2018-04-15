@@ -48,14 +48,14 @@ pipeline {
         }
 	stage('Publish Docker Image') {    
 	     steps{	  
-		sh "docker tag my-java-app localhost:5043/charan556/my-java-app"
-		sh "docker push localhost:5043/charan556/my-java-app"
+		sh "docker tag my-java-app localhost:5043/v2/my-java-app"
+		sh "docker push localhost:5043/v2/my-java-app"
 	     }
 	}
 	stage('Run Docker Image') {
 	     steps{	  
 		sh "if [ \$(docker ps -aqf 'name=my-java-app') ] ; then docker rm -f  \$(docker ps -aqf 'my-java-app'); else echo \" No container found\" ; fi"
-		sh "docker run -d --name my-java-app localhost:5043/charan556/my-java-app"
+		sh "docker run -d --name my-java-app localhost:5043/v2/my-java-app"
 	     }
         }
     }

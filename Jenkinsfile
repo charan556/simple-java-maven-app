@@ -21,18 +21,6 @@ pipeline {
                 }
             }
         }
-	stage('Generate Reports') {
-	     steps{	  
-		sh 'mvn site'
-	     }
-	}
-        stage('Publish Code Coverage Report'){
-	     steps{	  
-		publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false, 
-                keepAll: false, reportDir: 'target/site/jacoco', reportFiles: 'index.html', 
-                reportName: 'Code Coverage Report'])
-	     }
-	}
         stage('Publish Project Report') {
 	     steps{	  
 		publishHTML(target: [allowMissing: false, alwaysLinkToLastBuild: false,

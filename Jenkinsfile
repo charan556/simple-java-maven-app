@@ -47,7 +47,10 @@ pipeline {
 	     }
         }
 	stage('Run Docker Image') {
-	     steps{	  
+	     steps{	
+		sh "if [ \$(docker ps -aqf 'name=product-catalogue-deployment') ] ; 
+                        then docker rm -f  \$(docker ps -aqf 'name=product-catalogue-deployment'); 
+                        else echo \" No container found\" ; fi"     
 		sh "docker run -d --name my-java-app my-java-app java -jar my-app.jar"
 	     }
         }

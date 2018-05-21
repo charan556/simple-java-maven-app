@@ -7,19 +7,30 @@ pipeline {
     }
     stages {
         stage('Build') { 
-	     steps{	  
-                sh 'mvn clean install' 
-	     }
+	    steps{	  
+		sh 'mvn clean install' 
+	    }
         }
         stage('Run Integration Test') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
+            	steps {
+                	sh 'mvn test'
+            	}
+            	post {
+                	always {
+                    		junit 'target/surefire-reports/*.xml'
+                	}
+            	}
         }
-    }
+	stage('Build Docker Image') {
+		 steps{	  
+				sh "cp ./target/my-app-1.0-SNAPSHOT.jar ."
+				sh "docker build -f ./Dockerfile -t my-java-app ."
+			 }
+		}
+		stage('Run Docker Image') {
+			 steps{	  
+				sh "docker run -d --name my-java-app java -jar my-app.jar"
+			 }
+		}
+	}    
 }

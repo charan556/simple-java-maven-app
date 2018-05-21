@@ -24,7 +24,7 @@ pipeline {
 	stage('Build Docker Image') {
 		 steps{	  
 				sh "cp ./target/my-app-1.0-SNAPSHOT.jar ."
-				sh "docker build -f ./Dockerfile my-java-app ."
+				sh "docker build -f ./Dockerfile -t my-java-app ."
 			 }
 		}
 		stage('Run Docker Image') {

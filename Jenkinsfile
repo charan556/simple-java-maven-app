@@ -46,15 +46,9 @@ pipeline {
 		sh "docker build -f ./Dockerfile -t my-java-app ."
 	     }
         }
-	stage('Publish Docker Image') {    
-	     steps{	  
-		sh "docker tag my-java-app localhost:5043/v2/my-java-app"
-		sh "docker push localhost:5043/v2/my-java-app"
-	     }
-	}
 	stage('Run Docker Image') {
 	     steps{	  
-		sh "docker run -d --name my-java-app localhost:5043/v2/my-java-app java -jar my-app.jar"
+		sh "docker run -d --name my-java-app java -jar my-app.jar"
 	     }
         }
     }

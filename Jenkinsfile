@@ -48,7 +48,7 @@ pipeline {
         }
 	stage('Run Docker Image') {
 	     steps{	    
-		sh "docker run -d --name my-java-app java -jar my-app.jar"
+		sh "docker run -d --name my-java-app /usr/bin/java -jar my-app.jar"
 	     }
         }
     }

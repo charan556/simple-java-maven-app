@@ -11,7 +11,10 @@ public class App
     public App() {}
 
     public static void main(String[] args) {
-        System.out.println(new App().getMessage());
+        for(int i=1;i<=100;i++){
+                System.out.println(new App().getMessage());
+                Thread.sleep(5000);
+        }
     }
 
     private final String getMessage() {

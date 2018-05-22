@@ -20,7 +20,7 @@ public class AppTest
         System.setOut(new PrintStream(outContent));
     }
 
-   // @Test
+    @Test
     public void testAppConstructor() {
         try {
             new App();
@@ -29,8 +29,8 @@ public class AppTest
         }
     }
 
-   // @Test
-    public void testAppMain()
+   @Test
+    public void testAppMain() throws InterruptedException
     {
         App.main(null);
         try {

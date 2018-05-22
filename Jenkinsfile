@@ -48,9 +48,7 @@ pipeline {
         }
 	stage('Run Docker Image') {
 	     steps{	    
-		sh "if [ \$(docker ps -aqf 'name=my-java-app') ] ; 
-                        then docker rm -f  \$(docker ps -aqf 'name=my-java-app'); 
-                        else echo \" No container found\" ; fi"
+		sh "if [ \$(docker ps -aqf 'name=my-java-app') ] ;  then docker rm -f  \$(docker ps -aqf 'name=my-java-app');  else echo \" No container found\" ; fi"
 		sh "docker run -d my-java-app java -jar /my-app.jar"
 	     }
         }
